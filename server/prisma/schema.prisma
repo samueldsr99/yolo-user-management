@@ -12,7 +12,9 @@ datasource db {
 
 model Game {
   id Int @id @default(autoincrement())
+  imageUrl String?
   name String
+  description String?
   categoryId Int
   category GameCategory @relation(fields: [categoryId], references: [id])
   createdAt DateTime @default(now())

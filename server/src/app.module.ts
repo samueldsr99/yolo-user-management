@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
+import { GamesModule } from './games/games.module';
 
 import config from './config/config';
 
@@ -18,6 +19,7 @@ import config from './config/config';
     }),
     PrismaModule,
     UsersModule,
+    GamesModule,
   ],
   controllers: [AppController, UsersController],
   providers: [AppService, UsersService],

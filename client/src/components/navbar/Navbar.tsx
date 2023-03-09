@@ -17,22 +17,10 @@ type NavbarItem = {
 const DisclosurePanel: React.FC<{ navigation: NavbarItem[] }> = ({
   navigation,
 }) => (
-  <Disclosure.Panel className="sm:hidden">
-    <div className="space-y-1 px-2 pt-2 pb-3">
+  <Disclosure.Panel className="sm:hidden shadow-sm">
+    <div className="flex flex-col space-y-4 px-2 pt-2 pb-3">
       {navigation.map((item) => (
-        <Link to={item.href} key={item.name}>
-          <Disclosure.Button
-            className={clsx(
-              item.current
-                ? "bg-zinc-900 text-white"
-                : "text-zinc-300 hover:bg-gray-700 hover:text-white font-semibold",
-              "block px-3 py-2 rounded-md text-base font-medium"
-            )}
-            aria-current={item.current ? "page" : undefined}
-          >
-            {item.name}
-          </Disclosure.Button>
-        </Link>
+        <NavbarLink key={item.name} item={item} />
       ))}
     </div>
   </Disclosure.Panel>
@@ -43,19 +31,18 @@ type NavbarLinkProps = {
 };
 
 const NavbarLink: React.FC<NavbarLinkProps> = ({ item }) => (
-  <Link to={item.href}>
-    <a
-      className={clsx(
-        "transition-colors duration-200",
-        item.current
-          ? "bg-zinc-900 text-white"
-          : "text-zinc-300 hover:text-white hover:shadow-lg font-semibold",
-        "px-3 py-2 rounded-md text-sm font-medium"
-      )}
-      aria-current={item.current ? "page" : undefined}
-    >
-      {item.name}
-    </a>
+  <Link
+    to={item.href}
+    className={clsx(
+      "transition-all duration-200",
+      item.current
+        ? "font-bold text-zinc-900 underline underline-offset-8"
+        : "text-zinc-600 font-semibold",
+      "hover:underline hover:underline-offset-8 px-3 py-2 rounded-md text-md font-medium"
+    )}
+    aria-current={item.current ? "page" : undefined}
+  >
+    {item.name}
   </Link>
 );
 
@@ -77,10 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   ] as NavbarItem[];
 
   return (
-    <Disclosure
-      as="nav"
-      className={clsx("relative z-50 bg-zinc-800", className)}
-    >
+    <Disclosure as="nav" className={clsx("relative z-50", className)}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -98,13 +82,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               </div>
 
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <Link to="/">
-                  <a className="inline-flex">
-                    <Logo />
-                  </a>
+                <Link className="inline-flex items-center" to="/">
+                  <Logo />
                 </Link>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                  <div className="flex items-center space-x-4">
                     {navigation.map((item) => (
                       <NavbarLink key={item.name} item={item} />
                     ))}
@@ -112,8 +94,8 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 </div>
               </div>
             </div>
-            <DisclosurePanel navigation={navigation} />
           </div>
+          <DisclosurePanel navigation={navigation} />
         </>
       )}
     </Disclosure>

@@ -6,7 +6,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="px-8 py-12">{children}</main>
     </>
   );
 };

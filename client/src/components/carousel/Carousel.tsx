@@ -28,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ items = [], duration = 5 }) => {
     return () => clearInterval(intervalId);
   }, []);
 
-  return (
+  return amount > 0 ? (
     <div className="relative flex items-center max-w-[600px]">
       <button
         className="absolute h-full left-0 z-10 pl-4"
@@ -47,6 +47,8 @@ const Carousel: React.FC<CarouselProps> = ({ items = [], duration = 5 }) => {
         <ChevronRightIcon className="w-6 h-6 text-white" />
       </button>
     </div>
+  ) : (
+    <div>No Items</div>
   );
 };
 

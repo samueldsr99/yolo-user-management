@@ -17,10 +17,10 @@ const classes = clsx.bind({
   primary: "text-slate-400 bg-gray-800 border border-gray-600",
   secondary: "text-slate-900 bg-gray-300",
   disabled: "opacity-70",
-  sm: "py-1 px-2",
-  md: "py-2 px-4",
-  lg: "py-3 px-6",
-  xl: "py-4 px-8",
+  sm: "py-1 px-2 text-md",
+  md: "py-2 px-4 text-lg",
+  lg: "py-3 px-6 text-xl",
+  xl: "py-4 px-8 text-2xl",
 });
 
 const Button: React.FC<ButtonProps> = ({

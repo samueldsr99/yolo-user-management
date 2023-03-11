@@ -6,7 +6,9 @@ export class GamesService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findMany() {
-    return this.prisma.game.findMany({});
+    return this.prisma.game.findMany({
+      include: { category: true },
+    });
   }
 
   async findOne(id: number) {

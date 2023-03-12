@@ -8,7 +8,7 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findMany() {
-    return this.prisma.user.findMany({});
+    return this.prisma.user.findMany({ include: { address: true } });
   }
 
   async findOne(id: number) {

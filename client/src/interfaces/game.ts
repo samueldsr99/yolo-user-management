@@ -5,6 +5,6 @@ export interface Game extends IDBResult {
   imageUrl?: string;
   name: string;
   description?: string;
-  categoryId: number;
+  categoryId?: number;
   category?: GameCategory;
 }

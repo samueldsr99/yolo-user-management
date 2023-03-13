@@ -1,11 +1,11 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 import Button from "../components/common/button";
 import Carousel from "../components/carousel/Carousel";
 import { CarouselItemProps } from "../components/carousel/CarouselItem";
 import BaseLayout from "../layouts/BaseLayout";
 import { useListGames } from "../lib/api/hooks/games.hook";
-import { Link } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   return (

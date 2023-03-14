@@ -12,7 +12,10 @@ export class UsersService {
   }
 
   async findOne(id: number) {
-    return this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user.findUnique({
+      where: { id },
+      include: { address: true },
+    });
   }
 
   async create(createUserDto: CreateUserDto) {

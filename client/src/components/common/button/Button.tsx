@@ -6,7 +6,6 @@ import Spinner from "../spinner";
 export type ButtonProps = JSX.IntrinsicElements["button"] & {
   variant?: "primary" | "secondary" | "error";
   size?: "sm" | "md" | "lg" | "xl";
-  submit?: boolean;
   isLoading?: boolean;
   textCentered?: boolean;
 };
@@ -28,8 +27,8 @@ const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   size = "md",
   disabled,
+  type = "button",
   className,
-  submit = false,
   textCentered = false,
   isLoading,
   children,
@@ -37,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      type={submit ? "submit" : "button"}
+      type={type}
       className={classes(
         "root",
         variant,

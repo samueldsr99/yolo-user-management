@@ -2,22 +2,31 @@ import { useListCategories } from "../../lib/api/hooks/categories.hook";
 import Label from "../common/label";
 import Select from "../common/select";
 
-export type CategorySelectProps = {
+export type CategorySelectProps = JSX.IntrinsicElements["select"] & {
   value?: number;
   onChange?: (categoryId: number | null) => void;
+  isError?: boolean;
 };
 
-const CategorySelect: React.FC<CategorySelectProps> = ({ value, onChange }) => {
+const CategorySelect: React.FC<CategorySelectProps> = ({
+  value,
+  onChange,
+  isError,
+  ...props
+}) => {
   const { data: categories } = useListCategories();
 
   return (
     <div>
-      <Label htmlFor="categories">Categories</Label>
+      <Label htmlFor="categories">Category</Label>
       <Select
+        className="mt-22"
         value={value}
+        isError={isError}
         onChange={(e) => {
           return onChange?.(e.target.value ? Number(e.target.value) : null);
         }}
+        {...props}
       >
         <option value={0}>Empty</option>
         {categories?.map((category) => (

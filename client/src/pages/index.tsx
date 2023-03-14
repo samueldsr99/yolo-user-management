@@ -7,6 +7,7 @@ import { CarouselItemProps } from "../components/carousel/CarouselItem";
 import BaseLayout from "../layouts/BaseLayout";
 import { useListGames } from "../lib/api/hooks/games.hook";
 import Spinner from "../components/common/spinner";
+import HeroPattern from "../components/HeroPattern";
 
 const HeroSection: React.FC = () => {
   return (
@@ -104,6 +105,9 @@ const GamesSection: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <BaseLayout>
+      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+        <HeroPattern />
+      </div>
       <HeroSection />
       <GamesSection />
       <div className="h-44" />

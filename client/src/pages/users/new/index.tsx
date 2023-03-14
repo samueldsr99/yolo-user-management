@@ -39,7 +39,7 @@ const NewUserPage: React.FC = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     await createUser(data);
-    navigate("/");
+    navigate("/users");
   });
 
   return (

@@ -65,6 +65,7 @@ const TableBody: React.FC<TableBodyProps> = ({
         <tr key={row.id}>
           {columns.map((column) => (
             <td
+              key={column.key}
               className={clsx(
                 idx !== columns.length - 1 ? "border-b border-gray-200" : "",
                 "whitespace-nowrap px-3 py-4 text-sm text-gray-500"

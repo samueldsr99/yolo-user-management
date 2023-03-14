@@ -23,16 +23,9 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   onCancel,
   onConfirm,
 }) => {
-  const cancelButtonRef = useRef(null);
-
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        initialFocus={cancelButtonRef}
-        onClose={() => onClose?.()}
-      >
+      <Dialog as="div" className="relative z-10" onClose={() => onClose?.()}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -92,7 +85,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                     type="button"
                     variant="secondary"
                     onClick={onCancel}
-                    ref={cancelButtonRef}
                     textCentered
                   >
                     Cancel

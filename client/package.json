@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "start": "node server"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",

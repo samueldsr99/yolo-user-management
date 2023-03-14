@@ -8,8 +8,11 @@ import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import { GamesModule } from './games/games.module';
+import { CategoriesService } from './categories/categories.service';
+import { CategoriesModule } from './categories/categories.module';
 
 import config from './config/config';
+import { CategoriesController } from './categories/categories.controller';
 
 @Module({
   imports: [
@@ -20,8 +23,9 @@ import config from './config/config';
     PrismaModule,
     UsersModule,
     GamesModule,
+    CategoriesModule,
   ],
-  controllers: [AppController, UsersController],
-  providers: [AppService, UsersService],
+  controllers: [AppController, UsersController, CategoriesController],
+  providers: [AppService, UsersService, CategoriesService],
 })
 export class AppModule {}

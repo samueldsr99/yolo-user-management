@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import Table from "../../components/common/table";
 import ListLayout from "../../layouts/ListLayout";
@@ -10,9 +10,19 @@ import {
 import Button from "../../components/common/button";
 import { ConfirmationModal } from "../../components/modals";
 import { formatDateString } from "../../lib/utils";
+import ListGamesFilters from "../_components/ListGamesFilters";
 
 const GamesPage: React.FC = () => {
-  const { data: games } = useListGames();
+  const [params] = useSearchParams();
+  const categoryId = params.get("category");
+  const startDate = params.get("startDate") ?? undefined;
+  const endDate = params.get("endDate") ?? undefined;
+
+  const { data: games } = useListGames({
+    categoryId: categoryId ? Number(categoryId) : undefined,
+    startDate,
+    endDate,
+  });
   const { mutateAsync: deleteGame, isLoading: isMutating } =
     useDeleteGameMutation();
   const [deleteModalState, setDeleteModalState] = React.useState<{
@@ -58,6 +68,7 @@ const GamesPage: React.FC = () => {
         </Link>
       }
     >
+      <ListGamesFilters />
       <Table
         rows={rows}
         columns={columns}

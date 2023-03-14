@@ -8,8 +8,8 @@ export type InputProps = JSX.IntrinsicElements["input"] & {
 };
 
 const classes = clsx.bind({
-  root: "rounded-md outline-none",
-  primary: "bg-gray-300 text-black",
+  root: "rounded-md outline-none border border-gray-300",
+  primary: "bg-white text-black",
   secondary: "bg-gray-700 text-gray-100",
   error: "border border-red-500",
   sm: "px-1.5 py-1 text-sm",

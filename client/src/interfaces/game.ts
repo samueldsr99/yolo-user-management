@@ -8,3 +8,9 @@ export interface Game extends IDBResult {
   categoryId?: number;
   category?: GameCategory;
 }
+
+export type ListGames = {
+  categoryId?: number;
+  startDate?: string;
+  endDate?: string;
+};

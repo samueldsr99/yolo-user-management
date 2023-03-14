@@ -28,7 +28,10 @@ export class GamesService {
   }
 
   async findOne(id: number) {
-    return this.prisma.game.findUnique({ where: { id } });
+    return this.prisma.game.findUnique({
+      where: { id },
+      include: { category: true },
+    });
   }
 
   async deleteOne(id: number) {

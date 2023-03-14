@@ -1,8 +1,8 @@
 import { useMutation, useQuery } from "react-query";
 
 import queryClient from "../../../config/react-query.config";
-import { ListGames } from "../../../interfaces/game";
-import { deleteGame, listGames, readGame } from "../games";
+import { CreateGame, ListGames } from "../../../interfaces/game";
+import { createGame, deleteGame, listGames, readGame } from "../games";
 import * as querykeys from "../querykeys";
 
 export const useListGames = (params: ListGames) =>
@@ -17,5 +17,13 @@ export const useDeleteGameMutation = () =>
     onSuccess: async (_, { id }) => {
       await queryClient.invalidateQueries(querykeys.listGames());
       await queryClient.invalidateQueries(querykeys.readGame(id));
+    },
+  });
+
+export const useCreateGameMutation = () =>
+  useMutation({
+    mutationFn: (data: CreateGame) => createGame(data),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(querykeys.listGames());
     },
   });

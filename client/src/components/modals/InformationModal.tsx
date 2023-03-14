@@ -4,24 +4,18 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 import Button from "../common/button";
 
-export type ConfirmationModalProps = {
+export type InformationModalProps = {
   open?: boolean;
   title?: string | JSX.Element;
   content?: string | JSX.Element;
-  submitting?: boolean;
   onClose?(): void;
-  onCancel?(): void;
-  onConfirm?(): void;
 };
 
-const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
+const InformationModal: React.FC<InformationModalProps> = ({
   open = false,
-  submitting = false,
   onClose,
   title,
   content,
-  onCancel,
-  onConfirm,
 }) => {
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -50,9 +44,9 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div className="sm:flex sm:items-start">
-                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 sm:mx-0 sm:h-10 sm:w-10">
                     <ExclamationTriangleIcon
-                      className="h-6 w-6 text-red-600"
+                      className="h-6 w-6 text-indigo-300"
                       aria-hidden="true"
                     />
                   </div>
@@ -72,22 +66,11 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                   <Button
                     className="w-full sm:w-auto"
                     type="button"
-                    variant="error"
-                    onClick={onConfirm}
-                    disabled={submitting}
-                    isLoading={submitting}
+                    variant="warning"
+                    onClick={onClose}
                     textCentered
                   >
-                    <span>Confirm</span>
-                  </Button>
-                  <Button
-                    className="w-full sm:w-auto"
-                    type="button"
-                    variant="secondary"
-                    onClick={onCancel}
-                    textCentered
-                  >
-                    Cancel
+                    <span>I understand</span>
                   </Button>
                 </div>
               </Dialog.Panel>
@@ -99,4 +82,4 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   );
 };
 
-export default ConfirmationModal;
+export default InformationModal;

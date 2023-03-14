@@ -1,3 +1,4 @@
+import * as React from "react";
 import { z } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +12,7 @@ import Input from "../../../components/common/input";
 import ErrorMessage from "../../../components/error-message/ErrorMessage";
 import FormControl from "../../../components/form-control/FormControl";
 import { useCreateGameMutation } from "../../../lib/api/hooks/games.hook";
+import { InformationModal } from "../../../components/modals";
 
 const createGameSchema = z.object({
   categoryId: z
@@ -41,7 +43,14 @@ const NewGamePage: React.FC = () => {
   const navigate = useNavigate();
   const { mutateAsync: createGame, isLoading: isMutating } =
     useCreateGameMutation();
-  console.log(errors);
+
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!(localStorage.getItem("imageModalSeen") === "true")) {
+      setModalOpen(true);
+    }
+  }, [setModalOpen]);
 
   const onSubmit = handleSubmit(async (data) => {
     await createGame(data);
@@ -136,6 +145,17 @@ const NewGamePage: React.FC = () => {
           </Button>
         </div>
       </form>
+      <InformationModal
+        open={modalOpen}
+        title="Information"
+        content={
+          "Due to the lack of resources to host static files, we cannot upload your local images. Please insert an image url instead."
+        }
+        onClose={() => {
+          setModalOpen(false);
+          localStorage.setItem("imageModalSeen", "true");
+        }}
+      />
     </CreateLayout>
   );
 };

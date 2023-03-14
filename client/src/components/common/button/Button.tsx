@@ -4,7 +4,7 @@ import clsx from "classnames/bind";
 import Spinner from "../spinner";
 
 export type ButtonProps = JSX.IntrinsicElements["button"] & {
-  variant?: "primary" | "secondary" | "error";
+  variant?: "primary" | "secondary" | "error" | "warning";
   size?: "sm" | "md" | "lg" | "xl";
   isLoading?: boolean;
   textCentered?: boolean;
@@ -16,6 +16,7 @@ const classes = clsx.bind({
   primary: "text-slate-100 bg-zinc-800 border border-zinc-600",
   secondary: "text-slate-900 bg-zinc-300",
   error: "text-slate-100 bg-red-600",
+  warning: "text-indigo-100 bg-indigo-700",
   disabled: "opacity-70",
   sm: "py-1 px-2",
   md: "py-2 px-4",

@@ -21,14 +21,14 @@ const createGameSchema = z.object({
   imageUrl: z.union([z.literal(""), z.string().trim().url()]),
 });
 
-type CreateGame = z.infer<typeof createGameSchema>;
+type CreateGameForm = z.infer<typeof createGameSchema>;
 
 const NewGamePage: React.FC = () => {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<CreateGame>({
+  } = useForm<CreateGameForm>({
     resolver: zodResolver(createGameSchema),
     mode: "onSubmit",
     defaultValues: {

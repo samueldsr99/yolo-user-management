@@ -1,5 +1,8 @@
 import httpService from "../../config/axios.config";
-import { User } from "../../interfaces/user";
+import { CreateUser, User } from "../../interfaces/user";
+
+export const createUser = (data: CreateUser) =>
+  httpService.post("/users", data).then((e) => e.data as User);
 
 export const listUsers = () =>
   httpService.get("/users").then((e) => e.data as User[]);

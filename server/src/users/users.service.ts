@@ -20,9 +20,7 @@ export class UsersService {
       data: {
         name: createUserDto.name,
         email: createUserDto.email,
-        address: {
-          create: createUserDto.address,
-        },
+        address: { create: createUserDto.address },
       },
       include: {
         address: true,

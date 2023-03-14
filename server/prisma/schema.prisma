@@ -42,7 +42,7 @@ model User {
 model Address {
   id Int @id @default(autoincrement())
   line1 String
-  line2 String
+  line2 String?
   country String
   city String
   user User?

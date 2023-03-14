@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { BadgeVariant } from "../components/common/badge/Badge";
 
 import { DATE_FORMAT } from "../globals/date";
 import { Address } from "../interfaces/address";
@@ -24,4 +25,16 @@ export const buildUrl = (pathname: string, query: object) => {
   if (queryParams.length == 0) return pathname;
 
   return `${pathname}?${queryParams}`;
+};
+
+export const fromIdToBadgeVariant = (id: number) => {
+  const variants: BadgeVariant[] = [
+    "success",
+    "info",
+    "error",
+    "warning",
+    "disabled",
+  ];
+
+  return variants[id % variants.length];
 };

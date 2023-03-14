@@ -5,7 +5,7 @@ import { CreateGame, ListGames } from "../../../interfaces/game";
 import { createGame, deleteGame, listGames, readGame } from "../games";
 import * as querykeys from "../querykeys";
 
-export const useListGames = (params: ListGames) =>
+export const useListGames = (params: ListGames = {}) =>
   useQuery(querykeys.listGames(params), () => listGames(params));
 
 export const useReadGame = (id: number) =>

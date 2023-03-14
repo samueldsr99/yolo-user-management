@@ -9,7 +9,7 @@ export const useListUsers = () =>
   useQuery(querykeys.listUsers({}), () => listUsers());
 
 export const useReadUser = (id: number) =>
-  useQuery(querykeys.readGame(id), () => readUser(id));
+  useQuery(querykeys.readUser(id), () => readUser(id));
 
 export const useDeleteUserMutation = () =>
   useMutation({

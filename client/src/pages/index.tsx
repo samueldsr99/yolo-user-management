@@ -6,6 +6,7 @@ import Carousel from "../components/carousel/Carousel";
 import { CarouselItemProps } from "../components/carousel/CarouselItem";
 import BaseLayout from "../layouts/BaseLayout";
 import { useListGames } from "../lib/api/hooks/games.hook";
+import Spinner from "../components/common/spinner";
 
 const HeroSection: React.FC = () => {
   return (

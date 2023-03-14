@@ -10,15 +10,7 @@ export class GamesService {
 
   async create(game: CreateGameDto) {
     return this.prisma.game.create({
-      data: {
-        name: game.name,
-        description: game.description,
-        imageUrl: game.imageUrl,
-        category: {
-          create: game.category,
-        },
-      },
-      include: { category: true },
+      data: game,
     });
   }
 

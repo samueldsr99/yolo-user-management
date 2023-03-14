@@ -1,7 +1,4 @@
-import { Type } from 'class-transformer';
-import { IsOptional, IsString, ValidateNested } from 'class-validator';
-
-import CreateGameCategoryDto from './create-game-category.dto';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 class CreateGameDto {
   @IsString()
@@ -14,9 +11,8 @@ class CreateGameDto {
   @IsString()
   imageUrl?: string;
 
-  @ValidateNested()
-  @Type(() => CreateGameCategoryDto)
-  category: CreateGameCategoryDto;
+  @IsNumber()
+  categoryId: number;
 }
 
 export default CreateGameDto;

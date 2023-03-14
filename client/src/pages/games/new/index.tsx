@@ -69,7 +69,9 @@ const NewGamePage: React.FC = () => {
                 <CategorySelect
                   className="max-w-none md:max-w-[300px]"
                   value={value}
-                  onChange={onChange}
+                  onChange={(e) =>
+                    onChange(e.target.value ? Number(e.target.value) : null)
+                  }
                   isError={!!errors.categoryId}
                 />
                 {errors.categoryId && (

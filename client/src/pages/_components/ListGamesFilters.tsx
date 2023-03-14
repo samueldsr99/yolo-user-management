@@ -36,7 +36,9 @@ const ListGamesFilters: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <CategorySelect
           value={category ?? undefined}
-          onChange={(categoryId) => setCategory(categoryId)}
+          onChange={(e) =>
+            setCategory(e?.target.value ? Number(e.target.value) : null)
+          }
         />
         <div>
           <Label htmlFor="startDate">Start date</Label>

@@ -4,7 +4,6 @@ import Select from "../common/select";
 
 export type CategorySelectProps = JSX.IntrinsicElements["select"] & {
   value?: number;
-  onChange?: (categoryId: number | null) => void;
   isError?: boolean;
 };
 
@@ -23,9 +22,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
         className="mt-22"
         value={value}
         isError={isError}
-        onChange={(e) => {
-          return onChange?.(e.target.value ? Number(e.target.value) : null);
-        }}
+        onChange={onChange}
         {...props}
       >
         <option value={0}>Empty</option>

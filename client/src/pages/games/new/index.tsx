@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import CreateLayout from "../../../layouts/CreateLayout";
 import Label from "../../../components/common/label";
@@ -127,7 +127,10 @@ const NewGamePage: React.FC = () => {
             )}
           />
         </div>
-        <div className="py-8 flex justify-end">
+        <div className="py-8 flex justify-end gap-4">
+          <Link to="/games">
+            <Button variant="secondary">Cancel</Button>
+          </Link>
           <Button type="submit" isLoading={isMutating} disabled={isMutating}>
             Submit
           </Button>

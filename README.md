@@ -43,7 +43,7 @@ yarn build
 yarn start
 # -- If using npm
 npm install
-yarn build
+npm build
 npm start
 ```
 
@@ -88,6 +88,6 @@ yarn build
 yarn start
 # -- If using npm
 npm install
-yarn build
+npm build
 npm start
 ```

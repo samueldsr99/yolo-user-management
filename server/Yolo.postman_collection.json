@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "c2bbe10d-c082-4684-9340-6ff803470272",
+		"name": "Yolo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12492939"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mock@gmail.com\",\n    \"name\": \"Mock user\",\n    \"address\": {\n        \"line1\": \"Line 1\",\n        \"line2\": \"Line 2\",\n        \"city\": \"Michigan\",\n        \"country\": \"US\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/games?startDate=2023-03-09",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"games"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2023-03-09"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/games/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"games",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example\",\n    \"description\": \"My description\",\n    \"imageUrl\": \"https://www.zelda.com/breath-of-the-wild/assets/icons/BOTW-Share_icon.jpg\",\n    \"category\": {\n        \"name\": \"My mock category\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/games",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/games/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"games",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game Categories",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

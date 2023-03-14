@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import Button from "../../components/common/button";
 import Table from "../../components/common/table/Table";
+import LoadingState from "../../components/loading-state/LoadingState";
 import { ConfirmationModal } from "../../components/modals";
 import ListLayout from "../../layouts/ListLayout";
 import {
@@ -12,7 +13,7 @@ import {
 import { formatAddress, formatDateString } from "../../lib/utils";
 
 const UsersPage: React.FC = () => {
-  const { data: users } = useListUsers();
+  const { data: users, isLoading } = useListUsers();
   const { mutateAsync: deleteUser, isLoading: isMutating } =
     useDeleteUserMutation();
   const [deleteModalState, setDeleteModalState] = React.useState<{
@@ -60,6 +61,7 @@ const UsersPage: React.FC = () => {
         </Link>
       }
     >
+      <LoadingState open={isLoading} />
       <Table
         rows={rows}
         columns={columns}

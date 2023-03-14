@@ -6,6 +6,7 @@ import Carousel from "../components/carousel/Carousel";
 import { CarouselItemProps } from "../components/carousel/CarouselItem";
 import BaseLayout from "../layouts/BaseLayout";
 import { useListGames } from "../lib/api/hooks/games.hook";
+import Spinner from "../components/common/spinner";
 
 const HeroSection: React.FC = () => {
   return (
@@ -64,7 +65,13 @@ const GamesSection: React.FC = () => {
         {" "}
         <div className="shrink-0">
           <div className="mt-12 flex flex-col items-center justify-center gap-12">
-            {isLoading ? <>Loading</> : <Carousel items={carouselItems} />}
+            {isLoading ? (
+              <div className="h-96 w-96 flex items-center justify-center">
+                <Spinner />
+              </div>
+            ) : (
+              <Carousel items={carouselItems} />
+            )}
             <Link to="/games">
               <Button size="lg">Browse games</Button>
             </Link>

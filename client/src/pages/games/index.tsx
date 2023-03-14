@@ -11,6 +11,7 @@ import Button from "../../components/common/button";
 import { ConfirmationModal } from "../../components/modals";
 import { formatDateString } from "../../lib/utils";
 import ListGamesFilters from "../_components/ListGamesFilters";
+import LoadingState from "../../components/loading-state";
 
 const GamesPage: React.FC = () => {
   const [params] = useSearchParams();
@@ -18,7 +19,11 @@ const GamesPage: React.FC = () => {
   const startDate = params.get("startDate") ?? undefined;
   const endDate = params.get("endDate") ?? undefined;
 
-  const { data: games } = useListGames({
+  const {
+    data: games,
+    isLoading,
+    isRefetching,
+  } = useListGames({
     categoryId: categoryId ? Number(categoryId) : undefined,
     startDate,
     endDate,
@@ -68,6 +73,7 @@ const GamesPage: React.FC = () => {
         </Link>
       }
     >
+      <LoadingState open={isLoading || isRefetching} />
       <ListGamesFilters />
       <Table
         rows={rows}

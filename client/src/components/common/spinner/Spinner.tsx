@@ -6,7 +6,7 @@ export type SpinnerProps = JSX.IntrinsicElements["svg"] & {
 };
 
 const classes = clsx.bind({
-  root: "text-gray-200 animate-spin dark:text-gray-600 fill-blue-600",
+  root: "text-gray-50 text-opacity-40 animate-spin fill-blue-600",
   xs: "w-4 h-4",
   sm: "w-6 h-6",
   md: "w-8 h-8",

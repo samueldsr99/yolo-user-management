@@ -29,7 +29,7 @@ const Carousel: React.FC<CarouselProps> = ({ items = [], duration = 5 }) => {
   }, []);
 
   return amount > 0 ? (
-    <div className="relative flex items-center max-w-[600px]">
+    <div className="relative flex items-center max-w-[600px] overflow-x-hidden">
       <button
         className="absolute h-full left-0 z-10 pl-4"
         onClick={handleGoPrev}

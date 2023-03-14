@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import LoadingState from "../../../components/loading-state";
 
 import DetailsLayout from "../../../layouts/DetailsLayout";
 import { useReadUser } from "../../../lib/api/hooks/users.hook";
@@ -20,27 +21,28 @@ const UserDetailsPage: React.FC = () => {
   const { id } = params;
   const { data: user, isLoading } = useReadUser(Number(id));
 
-  return user && !isLoading ? (
+  return (
     <DetailsLayout
-      title={user.name}
+      title={user?.name ?? ""}
       returnText="Back to users"
       returnUrl="/users"
     >
-      <div className="divide-y divide-gray-300">
-        <div className="py-8 space-y-6">
-          <DetailsField label="Email" value={user.email} />
-          <DetailsField label="Name" value={user.name} />
+      <LoadingState open={isLoading} />
+      {user ? (
+        <div className="divide-y divide-gray-300">
+          <div className="py-8 space-y-6">
+            <DetailsField label="Email" value={user.email} />
+            <DetailsField label="Name" value={user.name} />
+          </div>
+          <div className="py-8 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
+            <DetailsField label="Line 1" value={user.address?.line1} />
+            <DetailsField label="Line 2" value={user.address?.line2 ?? "N/A"} />
+            <DetailsField label="City" value={user.address?.city} />
+            <DetailsField label="Country" value={user.address?.country} />
+          </div>
         </div>
-        <div className="py-8 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
-          <DetailsField label="Line 1" value={user.address?.line1} />
-          <DetailsField label="Line 2" value={user.address?.line2 ?? "N/A"} />
-          <DetailsField label="City" value={user.address?.city} />
-          <DetailsField label="Country" value={user.address?.country} />
-        </div>
-      </div>
+      ) : null}
     </DetailsLayout>
-  ) : (
-    <>Loading</>
   );
 };
 

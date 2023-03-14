@@ -1,8 +1,14 @@
-import queryClient from "../config/react-query.config";
+import type { QueryClient } from "react-query";
+import type { LoaderFunction } from "react-router-dom";
+
 import { listGames } from "../lib/api/games";
 import * as querykeys from "../lib/api/querykeys";
 
-export default async function loader() {
-  await queryClient.prefetchQuery(querykeys.listGames(), () => listGames());
-  return null;
+export default function loader(queryClient: QueryClient): LoaderFunction {
+  return async () => {
+    await queryClient.prefetchQuery(querykeys.listGames({}), () =>
+      listGames({})
+    );
+    return null;
+  };
 }

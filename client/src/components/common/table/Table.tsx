@@ -31,7 +31,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns }) => {
         {columns?.[0] ? (
           <th
             scope="col"
-            className="min-w-[6rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900"
+            className="min-w-[6rem] py-3.5 pl-2 pr-3 text-left text-sm font-semibold text-gray-900"
           >
             {columns[0].label}
           </th>
@@ -42,7 +42,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns }) => {
           <th
             key={col.key.toString()}
             scope="col"
-            className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="pl-2 pr-3 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             {col.label}
           </th>
@@ -60,17 +60,14 @@ const TableBody: React.FC<TableBodyProps> = ({
   detailsUrl,
 }) => {
   return (
-    <tbody className="divide-y divide-gray-200 bg-white">
+    <tbody className="bg-white">
       {rows.map((row, idx) => (
-        <tr key={row.id}>
+        <tr
+          key={row.id}
+          className={clsx(idx % 2 == 0 ? "bg-gray-50" : "bg-white")}
+        >
           {columns.map((column) => (
-            <td
-              key={column.key}
-              className={clsx(
-                idx !== columns.length - 1 ? "border-b border-gray-200" : "",
-                "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-              )}
-            >
+            <td className="pl-2 pr-3" key={column.key}>
               {row[column.key]}
             </td>
           ))}
@@ -104,7 +101,7 @@ const Table: React.FC<TableProps> = ({
     <div className="flow-root">
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full py-2 align-middle">
-          <table className="min-w-full table-fixed divide-y divide-gray-300">
+          <table className="min-w-full table-fixed">
             <TableHeader columns={columns} />
             <TableBody
               rows={rows}

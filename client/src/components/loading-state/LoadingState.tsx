@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 
 import Spinner from "../common/spinner";
 

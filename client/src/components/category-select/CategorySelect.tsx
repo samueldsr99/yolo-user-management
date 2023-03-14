@@ -1,4 +1,5 @@
 import { useListCategories } from "../../lib/api/hooks/categories.hook";
+import Label from "../common/label";
 import Select from "../common/select";
 
 export type CategorySelectProps = {
@@ -11,12 +12,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({ value, onChange }) => {
 
   return (
     <div>
-      <label
-        className="block text-sm font-medium leading-6 text-gray-900"
-        htmlFor="categories"
-      >
-        Categories
-      </label>
+      <Label htmlFor="categories">Categories</Label>
       <Select
         value={value}
         onChange={(e) => {

@@ -11,3 +11,17 @@ export const formatAddress = (address: Address): string => {
 
 export const formatDateString = (dateStr: string) =>
   format(new Date(dateStr), DATE_FORMAT);
+
+export const buildUrl = (pathname: string, query: object) => {
+  const queryParams = Object.entries(query)
+    .map(([key, value]) => {
+      if (!value) return null;
+      return `${key}=${value}`;
+    })
+    .filter(Boolean)
+    .join("&");
+
+  if (queryParams.length == 0) return pathname;
+
+  return `${pathname}?${queryParams}`;
+};
